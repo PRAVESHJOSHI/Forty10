@@ -1381,6 +1381,67 @@ a.contact__detail-item:hover { color: var(--accent); }
   .footer__bottom { flex-direction: column; gap: 16px; text-align: center; }
 }
 
+@media (max-width: 560px) {
+  .container { padding: 0 18px; }
+
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--nav-h) + 40px);
+    padding-bottom: 56px;
+  }
+
+  .hero__badge {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.72rem;
+  }
+
+  .hero__headline {
+    font-size: clamp(2.5rem, 16vw, 4rem);
+    margin-bottom: 20px;
+  }
+
+  .hero__sub {
+    font-size: 1rem;
+    margin-bottom: 26px;
+  }
+
+  .hero__actions { flex-direction: column; }
+  .hero__actions .btn { width: 100%; justify-content: center; }
+
+  .hero__scroll-hint { display: none; }
+
+  .clients { padding: 42px 0; }
+  .clients__logos { gap: 12px 18px; }
+  .client-name { font-size: 0.95rem; }
+
+  .section-header { margin-bottom: 40px; }
+  .section-title { font-size: clamp(2rem, 10vw, 2.8rem); }
+
+  .service-card,
+  .testi-card,
+  .contact-form {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .stats__grid { grid-template-columns: 1fr; }
+  .stat-item { padding: 28px 20px; }
+
+  .contact__detail-item {
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+
+  .contact-form { padding-top: 28px; padding-bottom: 28px; }
+
+  .footer__nav { flex-direction: column; gap: 20px; }
+
+  .back-to-top { bottom: 20px; right: 20px; }
+}
+
 @media (max-width: 480px) {
   .hero__actions { flex-direction: column; }
   .hero__actions .btn { width: 100%; justify-content: center; }
