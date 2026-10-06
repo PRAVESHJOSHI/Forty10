@@ -53,12 +53,38 @@ const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
         !toggle.contains(e.target)) closeMenu();
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+
+  const mediaQuery = window.matchMedia('(min-width: 769px)');
+  const handleResize = () => {
+    if (mediaQuery.matches) closeMenu();
+  };
+  window.addEventListener('resize', handleResize);
 })();
 
 
 /* ============================================================
    2. HERO LINES — entrance animation (runs once on load)
    ============================================================ */
+(function initThemeToggle() {
+  const toggle = qs('#themeToggle');
+  if (!toggle) return;
+
+  const savedTheme = localStorage.getItem('forty10-theme');
+  const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = savedTheme || (preferredDark ? 'dark' : 'light');
+  document.body.classList.toggle('theme-light', theme === 'light');
+
+  const setTheme = nextTheme => {
+    document.body.classList.toggle('theme-light', nextTheme === 'light');
+    localStorage.setItem('forty10-theme', nextTheme);
+  };
+
+  toggle.addEventListener('click', () => {
+    const isLight = document.body.classList.contains('theme-light');
+    setTheme(isLight ? 'dark' : 'light');
+  });
+})();
+
 (function initHeroLines() {
   const lines = qsa('.hero__headline .line');
   const badge = qs('.hero__badge');
